@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  rest:
+    build:
+      context: ./rest
+      dockerfile: Dockerfile
+    depends_on: 
+      - pgdb
+    ports:
+      - 5000:5000
+    restart: always
+    env_file:
+      - ./postgres.env
+
+
+  pgdb:
+    image: postgres:16.1-alpine3.19
+    env_file:
+      - ./postgres.env
+    volumes:
+      - ./dist/:/var/lib/postgresql/data
+    
