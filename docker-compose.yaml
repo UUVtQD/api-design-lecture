@@ -16,6 +16,9 @@ services:
 
   pgdb:
     image: postgres:16.1-alpine3.19
+    restart: always
+    ports:
+      - 5432:5432
     env_file:
       - ./postgres.env
     volumes:
