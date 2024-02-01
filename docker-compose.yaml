@@ -23,4 +23,5 @@ services:
       - ./postgres.env
     volumes:
       - ./dist/:/var/lib/postgresql/data
+      - ./rest/tables.sql:/docker-entrypoint-initdb.d/init.sql
     
